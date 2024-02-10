@@ -1,31 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import NewTodoForm from "./NewTodoForm";
+import "./style.css"
+import NewTodoForm from "./components/NewTodoForm";
+import TodoList from "./components/TodoList";
 
 function App() {
-  const [value, setValue] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("todos");
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+  useEffect(() => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
   let todo_id = uuidv4();
 
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-
-  function PreventReload(e) {
-    e.preventDefault();
+  function addTodo(title) {
     /**
      * naudodami ... operatorių mes sukuriame naują array į kurį idedame naują objektą
      */
     setTodos((currentTodos) => [
       ...currentTodos,
       {
-        title: value,
+        title,
         id: todo_id,
         completed: false,
       },
     ]);
-
-    setValue("");
   }
   /**
    * duodame todo item id
@@ -58,26 +60,11 @@ function App() {
 
   return (
     <>
-      <h1>Todo list</h1>
-      <NewTodoForm handleChange={handleChange} PreventReload={PreventReload} value={value}/>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <input
-              type="checkbox"
-              id="checklist"
-              checked={todo.completed}
-              onChange={(e) => handleCheck(todo.id, e.target.value)}
-            ></input>
-            <label htmlFor="checklist" key={todo.id}>
-              {todo.title}
-            </label>
-            <button onClick={(e) => handleDelete(todo.id, e.target.value)}>
-              delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      <h1>Add your todos!</h1>
+      <div className="Wrapper">
+      <NewTodoForm addTodo={addTodo}/>
+      <TodoList todoitem={todos} handleDelete={handleDelete} handleCheck={handleCheck}/>
+      </div>
     </>
   );
 }
