@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import NewTodoForm from "./NewTodoForm";
 
 function App() {
   const [value, setValue] = useState("");
@@ -23,7 +24,6 @@ function App() {
         completed: false,
       },
     ]);
-    console.log(todos);
 
     setValue("");
   }
@@ -59,16 +59,7 @@ function App() {
   return (
     <>
       <h1>Todo list</h1>
-      <form onSubmit={PreventReload}>
-        <input
-          value={value}
-          type="text"
-          id="form"
-          placeholder="task"
-          onChange={handleChange}
-        ></input>
-        <button type="submit">Add</button>
-      </form>
+      <NewTodoForm handleChange={handleChange} PreventReload={PreventReload} value={value}/>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
