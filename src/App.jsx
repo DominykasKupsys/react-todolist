@@ -19,7 +19,6 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  console.log(todos);
   let todo_id = uuidv4();
 
   function addTodo(title) {

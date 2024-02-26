@@ -5,9 +5,7 @@ function NewTodoForm({ addTodo }) {
   const [value, setValue] = useState("");
 
   function handleChange(e) {
-    if (e.target.value) {
-      setValue(e.target.value);
-    }
+    setValue(e.target.value);
   }
 
   function PreventReload(e) {

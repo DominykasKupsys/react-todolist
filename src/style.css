@@ -58,14 +58,10 @@ body {
 input[type="checkbox"] {
   accent-color: red;
 }
-.progressbarWrapper {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
 .progressbar {
-  display: block;
+  display: inline-block;
   height: 20px;
-  background: red;
   text-align: center;
+  overflow: auto;
+  background-color: rgb(244, 13, 48);
 }

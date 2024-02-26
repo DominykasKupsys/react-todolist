@@ -1,7 +1,13 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-function TodoList({ handleCheck, handleDelete, todoitem, addExp }) {
+function TodoList({
+  handleCheck,
+  handleDelete,
+  todoitem,
+  addExp,
+  progressbar,
+}) {
   return (
     <div>
       <ul className="TodoList">
@@ -13,6 +19,7 @@ function TodoList({ handleCheck, handleDelete, todoitem, addExp }) {
             handleCheck={handleCheck}
             handleDelete={handleDelete}
             addExp={addExp}
+            progressbar={progressbar}
           />
         ))}
       </ul>
