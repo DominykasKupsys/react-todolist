@@ -6,18 +6,45 @@ import TodoList from "./components/TodoList";
 import LevelUp from "./components/LevelUp";
 
 function App() {
-  const [level, setLevel] = useState(1);
-  const [currentExp, setCurrentExp] = useState(0);
-  const [requiredExp, setRequiredExp] = useState(100);
+  // const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("level");
+    const initialValue = JSON.parse(saved);
+    return initialValue || 1;
+  });
+  // const [currentExp, setCurrentExp] = useState(0);
+  const [currentExp, setCurrentExp] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("currentExp");
+    const initialValue = JSON.parse(saved);
+    return initialValue || 0;
+  });
+  // const [requiredExp, setRequiredExp] = useState(100);
   const [todos, setTodos] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("todos");
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
+  const [requiredExp, setRequiredExp] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("requiredExp");
+    const initialValue = JSON.parse(saved);
+    return initialValue || 100;
+  });
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
+  useEffect(() => {
+    localStorage.setItem("level", JSON.stringify(level));
+  }, [level]);
+  useEffect(() => {
+    localStorage.setItem("currentExp", JSON.stringify(currentExp));
+  }, [currentExp]);
+  useEffect(() => {
+    localStorage.setItem("requiredExp", JSON.stringify(requiredExp));
+  }, [requiredExp]);
 
   let todo_id = uuidv4();
 
