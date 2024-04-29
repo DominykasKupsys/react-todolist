@@ -4,6 +4,7 @@ import "./style.css";
 import NewTodoForm from "./components/NewTodoForm";
 import TodoList from "./components/TodoList";
 import LevelUp from "./components/LevelUp";
+import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   // const [level, setLevel] = useState(1);
@@ -25,7 +26,7 @@ function App() {
     // getting stored value
     const saved = localStorage.getItem("todos");
     const initialValue = JSON.parse(saved);
-    return initialValue || "";
+    return initialValue || [];
   });
   const [requiredExp, setRequiredExp] = useState(() => {
     // getting stored value
@@ -89,20 +90,25 @@ function App() {
   }
 
   function addExp(id) {
-    todos.map((todo) => {
-      if (!todo.completed && !todo.exp_gotten) {
-        setCurrentExp(currentExp + 10);
-        setTodos((currentTodos) =>
-          currentTodos.map((todo) => {
-            if (todo.id === id) {
-              return { ...todo, exp_gotten: !todo.exp_gotten };
-            }
-            return todo;
-          })
-        );
-      }
-      return todo;
-    });
+    const todoToUpdate = todos.find((todo) => todo.id === id);
+
+    if (todoToUpdate) {
+      const expChange = todoToUpdate.completed ? -10 : 10;
+
+      setCurrentExp(currentExp + expChange);
+      setTodos(
+        todos.map((todo) => {
+          if (todo.id === id) {
+            return {
+              ...todo,
+              completed: !todo.completed,
+              exp_gotten: !todo.exp_gotten,
+            };
+          }
+          return todo;
+        })
+      );
+    }
   }
 
   if (currentExp === requiredExp) {
@@ -112,9 +118,9 @@ function App() {
   }
 
   return (
-    <>
-      <h1>Add your todos!</h1>
+    <div className="fluid-container">
       <div className="Wrapper">
+        <h1 className="py-3">Add your todos!</h1>
         <NewTodoForm addTodo={addTodo} />
         <TodoList
           todoitem={todos}
@@ -128,7 +134,7 @@ function App() {
           requiredExp={requiredExp}
         />
       </div>
-    </>
+    </div>
   );
 }
 

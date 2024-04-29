@@ -20,7 +20,10 @@ function NewTodoForm({ addTodo }) {
   }
 
   return (
-    <form className="form" onSubmit={PreventReload}>
+    <form
+      className="form d-flex align-items-center justify-content-center"
+      onSubmit={PreventReload}
+    >
       <input
         className="input"
         value={value}

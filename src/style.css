@@ -1,14 +1,16 @@
-body {
-  background-color: rgb(244, 13, 48);
-  color: white;
+.fluid-container {
+  background: linear-gradient(45deg, rgb(61, 5, 87), #845afc);
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
+  color: white;
 }
 .Wrapper {
-  background-color: rgb(40, 40, 40);
+  background-color: #1d1545;
   text-align: center;
   width: 500px;
   padding: 15px;
@@ -19,16 +21,20 @@ body {
   padding-left: 0;
 }
 .TodoItem {
+  width: 90%;
+  margin: auto;
   margin-bottom: 10px;
-  border-bottom: 2px solid rgb(24, 25, 26);
   list-style-type: none;
   display: flex;
-  justify-content: space-between;
-  padding-bottom: 10px;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #845afc;
+  border-radius: 5px;
 }
 .input {
-  background-color: rgb(24, 25, 26);
-  border: 0cm;
+  background-color: #1d1545;
+  border: solid 2px #845afc;
   width: 80%;
   height: 40px;
   color: white;
@@ -37,32 +43,34 @@ body {
 }
 .submit_btn {
   border: 0;
-  background-color: rgb(244, 13, 48);
+  background-color: #845afc;
   color: white;
   height: 40px;
   width: 10%;
   transition: padding 0.3s;
 }
 .delete_btn {
+  padding: 0;
+  margin: 0;
   border: 0;
-  background-color: rgb(244, 13, 48);
+  background-color: #845afc;
   color: white;
   transition: padding 0.3s;
-}
-.delete_btn:hover {
-  background-color: rgb(182, 3, 30);
-}
-.submit_btn:hover {
-  background-color: rgb(182, 3, 30);
-}
-input[type="checkbox"] {
-  accent-color: red;
 }
 .progressbar {
   display: inline-block;
   height: 20px;
   text-align: center;
   overflow: auto;
-  background-color: rgb(244, 13, 48);
+  background: linear-gradient(45deg, #392b7d, #845afc);
   border-radius: 50px;
+}
+
+.checkbox:checked {
+  background-color: #1d1545 !important;
+  border: none !important;
+}
+.checkbox:focus {
+  border: none !important;
+  box-shadow: none !important;
 }
