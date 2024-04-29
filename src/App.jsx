@@ -88,6 +88,13 @@ function App() {
   function handleDelete(id) {
     setTodos((currentTodos) => currentTodos.filter((todo) => todo.id !== id));
   }
+  const handleEdit = (id, newText) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, title: newText } : todo
+      )
+    );
+  };
 
   function addExp(id) {
     const todoToUpdate = todos.find((todo) => todo.id === id);
@@ -127,6 +134,7 @@ function App() {
           handleDelete={handleDelete}
           handleCheck={handleCheck}
           addExp={addExp}
+          handleEdit={handleEdit}
         />
         <LevelUp
           level={level}

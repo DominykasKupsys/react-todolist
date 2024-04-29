@@ -4,6 +4,7 @@ import TodoItem from "./TodoItem";
 function TodoList({
   handleCheck,
   handleDelete,
+  handleEdit,
   todoitem,
   addExp,
   progressbar,
@@ -20,6 +21,7 @@ function TodoList({
             handleDelete={handleDelete}
             addExp={addExp}
             progressbar={progressbar}
+            handleEdit={handleEdit}
           />
         ))}
       </ul>
