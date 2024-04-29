@@ -7,29 +7,22 @@ import LevelUp from "./components/LevelUp";
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  // const [level, setLevel] = useState(1);
   const [level, setLevel] = useState(() => {
-    // getting stored value
     const saved = localStorage.getItem("level");
     const initialValue = JSON.parse(saved);
     return initialValue || 1;
   });
-  // const [currentExp, setCurrentExp] = useState(0);
   const [currentExp, setCurrentExp] = useState(() => {
-    // getting stored value
     const saved = localStorage.getItem("currentExp");
     const initialValue = JSON.parse(saved);
     return initialValue || 0;
   });
-  // const [requiredExp, setRequiredExp] = useState(100);
   const [todos, setTodos] = useState(() => {
-    // getting stored value
     const saved = localStorage.getItem("todos");
     const initialValue = JSON.parse(saved);
     return initialValue || [];
   });
   const [requiredExp, setRequiredExp] = useState(() => {
-    // getting stored value
     const saved = localStorage.getItem("requiredExp");
     const initialValue = JSON.parse(saved);
     return initialValue || 100;
@@ -122,6 +115,12 @@ function App() {
     setLevel((a) => a + 1);
     setCurrentExp(0);
     setRequiredExp((a) => a + 10);
+  }
+
+  if (currentExp < 0) {
+    setLevel((a) => a - 1);
+    setCurrentExp(requiredExp - 20);
+    setRequiredExp((a) => a - 10);
   }
 
   return (

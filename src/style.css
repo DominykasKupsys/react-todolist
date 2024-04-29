@@ -1,29 +1,39 @@
 .fluid-container {
   background: linear-gradient(45deg, rgb(61, 5, 87), #845afc);
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
   color: white;
+  overflow: auto;
+  padding: 2rem;
 }
 .Wrapper {
   background-color: #1d1545;
   text-align: center;
-  width: 500px;
-  padding: 15px;
+  width: 35rem;
+  padding: 1rem;
 }
 .TodoList {
-  padding-top: 25px;
-  padding-bottom: 25px;
   padding-left: 0;
-}
-.TodoItem {
+  max-height: 45vh;
+  overflow: auto;
   width: 90%;
   margin: auto;
-  margin-bottom: 10px;
+}
+.TodoList::-webkit-scrollbar {
+  display: none;
+}
+/* .fluid-container ::-webkit-scrollbar-thumb {
+  background-color: #845afc;
+  border-radius: 10px;
+}  */
+.TodoItemOverflow {
+  width: 100%;
+  margin-bottom: 0.8rem;
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -32,39 +42,42 @@
   background-color: #845afc;
   border-radius: 5px;
 }
-.TodoItemEdit {
+
+.TodoItemEditOverflow {
   margin: auto;
   list-style-type: none;
-  width: 90%;
+  width: 100%;
+  margin-left: 0;
   display: flex;
   align-items: center;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   border-radius: 5px;
 }
+
 .input {
   background-color: #1d1545;
   border: solid 2px #845afc;
   width: 80%;
-  height: 40px;
+  height: 2.5rem;
   color: white;
-  padding-left: 10px;
+  padding-left: 0.5rem;
   outline: none;
 }
 .inputEdit {
   background-color: #1d1545;
   border: solid 2px #845afc;
   width: 100%;
-  height: 40px;
+  height: 2.5rem;
   color: white;
-  padding-left: 10px;
+  padding-left: 0.5rem;
   outline: none;
 }
 .submit_btn {
   border: 0;
   background-color: #845afc;
   color: white;
-  height: 40px;
+  height: 2.5rem;
   width: 3rem;
   transition: padding 0.3s;
 }
@@ -84,12 +97,12 @@
   background-color: #845afc;
   color: white;
   transition: padding 0.3s;
-  height: 40px;
+  height: 2.5rem;
   width: 3rem;
 }
 .progressbar {
   display: inline-block;
-  height: 20px;
+  height: 1.25rem;
   text-align: center;
   overflow: auto;
   background: linear-gradient(45deg, #392b7d, #845afc);
@@ -103,4 +116,34 @@
 .checkbox:focus {
   border: none !important;
   box-shadow: none !important;
+}
+@media only screen and (max-width: 600px) {
+  .fluid-container {
+    padding: 1rem; /* Adjusted padding for better mobile view */
+  }
+
+  .Wrapper {
+    width: 90%; /* Adjusted width for better mobile view */
+  }
+
+  .TodoItemOverflow {
+    width: 100%; /* Adjusted width for better mobile view */
+    margin: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .TodoItemEditOverflow {
+    width: 16rem;
+    margin: auto;
+    margin-top: 1rem;
+  }
+
+  .TodoList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .input {
+    width: 70%;
+  }
 }

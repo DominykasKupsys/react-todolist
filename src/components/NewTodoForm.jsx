@@ -21,7 +21,7 @@ function NewTodoForm({ addTodo }) {
 
   return (
     <form
-      className="form d-flex align-items-center justify-content-center"
+      className="form d-flex align-items-center justify-content-center mb-4"
       onSubmit={PreventReload}
     >
       <input

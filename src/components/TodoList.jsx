@@ -22,6 +22,7 @@ function TodoList({
             addExp={addExp}
             progressbar={progressbar}
             handleEdit={handleEdit}
+            todocount={todoitem.length}
           />
         ))}
       </ul>

@@ -5,7 +5,7 @@ function LevelUp({ level, currentExp, requiredExp }) {
   console.log(ProgressBar);
   return (
     <>
-      <div>
+      <div className="mt-3">
         <p>level {level}</p>
         <p>
           progress {currentExp}/{requiredExp}
